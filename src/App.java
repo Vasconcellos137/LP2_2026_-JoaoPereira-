@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class App {
     static java.util.Scanner LER = new java.util.Scanner(System.in);
 
@@ -11,7 +13,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        CalcularProdutoMatricial();
+        TrocarLinhasEColunasDaMatriz();
 
     }
 
@@ -208,8 +210,6 @@ public class App {
         double contadorA = 0;
         double contadorB = 0;
 
-
-
         System.out.println("matriz A");
 
         for (int i = 0; i < matrizA.length; i++) {
@@ -243,6 +243,105 @@ public class App {
             System.out.printf("[%d] ", i);
             for (int j = 0; j < matrizC[i].length; j++) {
                 System.out.printf("%.2f ", matrizC[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    /*
+     * Escreva um programa que receba uma matriz M(6,6) e um valor A . O
+     * procedimento deve
+     * multiplicar cada elemento de M por A e armazenar em um vetor V(36).
+     */
+    public static void MultiplicarUmaMatriz() {
+        double[][] matrizde6 = new double[6][6];
+        double valor = 0;
+        double[] vetorde36 = new double[36];
+        Random sorteio = new Random();
+        int k = 0;
+
+        valor = LernumDouble();
+
+        for (int i = 0; i < matrizde6.length; i++) {
+            for (int j = 0; j < matrizde6[i].length; j++) {
+                matrizde6[i][j] = sorteio.nextDouble();
+            }
+        }
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                vetorde36[k] = matrizde6[i][j] * valor;
+                k++;
+            }
+        }
+
+        for (int i = 0; i < vetorde36.length; i++) {
+            System.out.println("numero " + i + " multiplicado: " + vetorde36[i]);
+        }
+    }
+
+    /*
+     * Escreva um programa que receba uma matriz A(10,10), e realize as seguintes
+     * trocas:
+     * a) a linha 2 com a linha 8;
+     * b) a coluna 4 com a coluna 10;
+     * c) a diagonal principal com a secundária;
+     * d) a linha 5 com a coluna 10;
+     * Ao final, apresente a Matriz A atualizada
+     */
+
+    public static void TrocarLinhasEColunasDaMatriz() {
+        double[][] matrizde10 = new double[10][10];
+        double cont = 0;
+        double troc = 0;
+
+        for (int i = 0; i < matrizde10.length; i++) {
+            for (int j = 0; j < matrizde10[i].length; j++) {
+                matrizde10[i][j] = cont++;
+            }
+        }
+
+        for (int i = 0; i < matrizde10.length; i++) {
+            for (int j = 0; j < matrizde10[i].length; j++) {
+                troc = matrizde10[1][j];
+                matrizde10[1][j] = matrizde10[i][7];
+                matrizde10[i][7] = troc;
+            }
+        }
+
+        for (int i = 0; i < matrizde10.length; i++) {
+            for (int j = 0; j < matrizde10[i].length; j++) {
+                troc = matrizde10[i][3];
+                matrizde10[i][3] = matrizde10[i][9];
+                matrizde10[i][9] = troc;
+            }
+        }
+
+        for (int i = 0; i < matrizde10.length; i++) {
+            for (int j = 0; j < matrizde10[i].length; j++) {
+                troc = matrizde10[i][i];
+                matrizde10[i][i] = matrizde10[i][9 - i];
+                matrizde10[i][9 - i] = troc;
+            }
+        }
+
+        for (int i = 0; i < matrizde10.length; i++) {
+            for (int j = 0; j < matrizde10[i].length; j++) {
+                troc = matrizde10[4][j];
+                matrizde10[4][j] = matrizde10[i][9];
+                matrizde10[i][9] = troc;
+            }
+        }
+
+        for (int i = 0; i < matrizde10.length; i++) {
+            System.out.printf("[%d] ", i);
+        }
+        System.out.println();
+
+        for (int i = 0; i < matrizde10.length; i++) {
+            System.out.printf("[%d] ", i);
+            for (int j = 0; j < matrizde10[i].length; j++) {
+                System.out.printf("%.2f ", matrizde10[i][j]);
             }
             System.out.println();
         }
