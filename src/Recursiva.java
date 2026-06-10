@@ -1,4 +1,4 @@
-public class Recursiva {
+public class  {
     
     public static int somatorio(int inicio, int fim) {
 
